@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://n7uc5yvkduvw"]
+[gd_scene load_steps=3 format=3 uid="uid://n7uc5yvkduvw"]
 
 [ext_resource type="Texture2D" uid="uid://hswhohxekmdy" path="res://sprites/dwarf.png" id="1_ldkcw"]
+[ext_resource type="Script" uid="uid://bcf6bncv4i181" path="res://loose/dwarf.gd" id="1_t5v1m"]
 
 [node name="Dwarf" type="Node2D"]
+script = ExtResource("1_t5v1m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ldkcw")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnwpdbjmrmg2n"
-path="res://.godot/imported/ores-tilemap-Sheet.png-adbe7dcac313eabe2824362bc37856bb.ctex"
+uid="uid://cxinxh436ir1n"
+path="res://.godot/imported/stone-Sheet.png-0dfe585f014df225a68938a02de966bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ores-tilemap-Sheet.png"
-dest_files=["res://.godot/imported/ores-tilemap-Sheet.png-adbe7dcac313eabe2824362bc37856bb.ctex"]
+source_file="res://sprites/stone-Sheet.png"
+dest_files=["res://.godot/imported/stone-Sheet.png-0dfe585f014df225a68938a02de966bb.ctex"]
 
 [params]
 

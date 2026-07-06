@@ -1,0 +1,467 @@
+get world working as a tilemap?
+	have a default stone tile
+	have some ore tiles spawn in too, in veins
+		probably indexed sprites, have the stone just be grey for now, and ores be colours
+		not sure on the spawning algorithm, maybe an entropy/bell curve spawner? for each tile, if stone and no adjacent minerals, roll. if successful, create a vein shape. for tile in vein shape, if stone, turn into mineral
+
+probably get the world generation going first, including a cut out in the centre of the map
+get spawning in a lil dwarf working
+from there i should be gucci, it's just specific features (pressing ui button depletes resource and changes global pickaxe_power variable; pressing ui button spawns a new dwarf; pressing ui button spawns a new map)
+
+main features:
+	-algorithmic procedural world generation
+	-autonomous dwarves
+		-ideally with behaviours directed by numerical variables, that you can improve with resource
+	-robust ui that tracks and controls resources, upgrades, resets, pauses, etc
+	-incremental game stat sytem
+
+to draw:
+	-tile set: basic stone that tiles nicely and have nice empty-space-edges, background for when empty of tiles, ores in the stone
+	-ui 9-patch that is highly usable
+		-ui icons like the resources, and the powerups?
+	-dwarves
+		-animated?
+
+
+to me the part im least confident is in the autonomous pathfinding. i don't know anything about implementing this, or hiccups
+	it's probably fairly doable though, it's such a basic feature of gaming
+
+this seems a bit feature-i've-never-done-before heavy for a game jam - tilemapping, autonomous pathfinding. can probably do it over today and tomorrow, but not particularly deeply. i should focus on those two aspects first, and layer the game on top after. make it functional first
+
+
+pathfinding
+--------------
+dwarves:
+	scan an area (x) tiles around them
+	pick a destination based on criteria: most valuable ore spotted, or a random tile in the cone direction away from home
+		-can tutorialize this by having random digging directions at the start, and then upgrade into ore-vision
+	pathfind to it, including "is_mineable" checks to avoid lava
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dwarf names
+-------------
+probably just generate a first name, slap on a last name, slap that into a list of now-banned names, generate until you get a not-banned name
+	maybe small% chance to generate a new last name, otherwise use already present last names
+	something like
+		if last_names_count <= 10: 50% generate same last name, 50% new
+		if > 10: 10% new last name, 90% old
+
+https://www.behindthename.com/names/usage/ancient-germanic
+complete first names
+-------------
+Ago
+Aki
+Aghi
+Aesc
+Avila
+Aveza
+Avelina
+Autchar
+Baggi
+Baldo
+Berahard
+Brando
+Bjartr
+Bjarni
+Birna
+Birgir
+Bruno
+Charibert
+Chilperic
+Dudda
+Engel
+Gautstafr
+Gisli
+Gunda
+Haimo
+Hallr
+Harjamanno
+Harjawaldaz
+Haroknutr
+Harjaberhtaz
+Hildingr
+Hludwig
+Hrothilandaz
+Hrothihildiz
+Ketill
+Ketillaug
+Knutr
+Kunibert
+Odoacer
+Richardis
+Roza
+Rudericus
+Rudesind
+Rumhilt
+Runa
+Runi
+Sindri
+Solvi
+Somerled
+Sturla
+Suni
+Sverrir
+Swanahilda
+Sveinungr
+Tata
+Thancrat
+Thorior
+Wina
+Wine
+Yrsa
+Yngvildr
+Yngvarr
+
+
+
+
+first names prefixes
+--------------
+Adal -> noble
+Ad -> father
+Aelf -> elf
+Aeoel -> noble
+Ag -> awe, fear
+Aist -> loud, violent
+Al -> all
+Alde -> old
+Alt -> old
+Amala -> vigorous, brave
+Ande -> zeal
+Anse -> god
+Anu -> ancestor
+As -> god
+Athana -> year
+Aud -> wealth, fortune
+Bar -> axe
+Bau -> ring, bracelet
+Beorn -> warrior
+Ber -> bear
+Bert -> bright
+Blanch -> white
+Bot -> improvement
+Burg -> fortress
+Carlo -> man
+Cen -> bold
+Clodo -> famous, loud
+Colo -> head, peak
+Con -> brave
+Cyne -> royal
+Dro -> to carry, pull
+Ead -> wealth, fortune
+Eald -> old
+Ealh -> temple
+Egil - edge, blade
+Emme -> great; unceasing; home
+Eofor -> boar
+Er -> honour, respect
+Ermen -> great, immense
+Ey -> island; good fortune
+Fara -> journey
+Gari -> ready, prepared
+Gais -> spear
+Gaut -> the tribe of "Geat"
+Gilt -> payment
+Gis -> pledge, hostage; spear
+Glaed -> bright, cheerful
+Got -> gift from god
+Grim -> mask
+Guma -> man
+Guo -> god
+Hade -> battle, combat
+Hallr -> rock
+Ha -> high; battle, combat
+Hart -> firm, brave
+Hathus -> battle, combat
+Helm -> helm
+Here -> army
+Heri -> army
+Hilde -> battle
+Hrafn -> raven
+Hram -> raven
+Hro -> fame
+Hu -> mind, thought, spirit
+Hum -> bear cub
+Ing -> the god "Ing", fertility or creation?
+Irm -> whole, great
+Jarl -> chieftain, nobleman
+Knu -> knot
+Lan -> land
+Leof -> dear, beloved
+Leo -> lion
+Leuth -> people
+Loth -> famous, loud
+Maer -> famous
+Magni -> power, strength
+Mal -> meeting, assembly, court
+Man -> man
+Megin -> power, strength
+Milde -> gentle
+Odal -> heritage
+Odd -> point of a sword
+Ort -> point
+Os -> god
+Phara -> journey
+Rad -> counsel, advice
+Ragin -> advice, counsel, decision
+Rao -> counsel, advice
+Rigo -> ruler, king
+Romu -> fame, glory
+Sae -> sea
+Sal -> room, hall
+Sig -> victory
+Sigis -> victory
+Theo -> people
+Val -> the dead
+Vere -> true; aware, cautious
+Walah -> foreigner
+Walde -> power, authority
+Weald -> powerful, mighty
+Wemb -> belly
+Wid -> wood
+Wigand -> warrior
+Wig -> war
+Wiht -> creature
+Willi -> will, desire
+Winni -> friend
+Wulf -> wolf
+
+
+
+
+first name suffixes
+--------------
+wynn -> joy
+thyro -> strength
+fridu -> peace
+hadu -> battle, combat
+gast -> guest, stranger
+dis -> goddess
+thjofr -> thief
+farus -> journey
+gunda -> battle
+hard -> hardy, brave
+linda -> soft, tender
+win -> friend
+mari -> famous
+flaed -> beauty?
+ric -> ruler, king
+weard -> guardian
+wynn -> joy
+maere -> famous
+raed -> counsel, advice
+stan -> stone
+weald -> powerful, mighty
+wulf -> wolf
+gair -> spear
+hild -> battle
+sige -> victory
+trand -> rim of shield
+tram -> raven
+do -> command, order
+man -> person
+mund -> protection
+mundr -> protector
+burg -> fortress
+bert -> bright
+wine -> friend
+gifu -> gift
+here - army
+swith - > strong
+olt -> power, authority
+inius -> whole, universal
+geror -> enclosure, yard
+overa -> true; aware, cautious
+steinn -> stone
+bjorg -> salvation, help
+laug -> promised, vowed
+ny -> new
+ormr -> serpent
+frior -> beautiful, beloved
+thormr -> honour, respect
+mut -> mind, spirit
+funs -> ready
+ny -> new
+run -> secret lore, rune
+ilia -> wealth, fortune
+froor -> peace, love
+unn -> wave
+bald -> bold, brave
+rinn -> eagle
+
+
+last name prefixes
+--------------------
+list of gems, stones, earthen things
+
+gems: https://www.gemsociety.org/gemstone-encyclopedia/
+
+Agate
+Adamite
+Aelxandrite
+Amethyst
+Amber
+Ammolite
+Anatas
+Anorthite
+Aquamarine
+Aragonite
+Azurite
+Barite
+Benitoite
+Bloodstone
+Boleite
+Black-Diamond
+Bornite
+Calcite
+Canasite
+Carnelian
+Chalcedony
+Chameleon-Diamond
+Cinnabar
+Citrine
+Corundum
+Cuprite
+Diamond
+Dolomite
+Emerald
+Epidote
+Feldspar
+Fluorite
+Gray-Diamond
+Garnet
+Hematite
+Iolite
+Jade
+Jet
+Kyanite
+Lapis-Lazuli
+Malachite
+Milarite
+Moonstone
+Obsidian
+Nephrite
+Onyx
+Periclase
+Peridot
+Pink-Diamond
+Proustite
+Pyrite
+Quartz
+Realgar
+Red-Diamond
+Rubellite
+Ruby
+Sapphire
+Siderite
+Spessartite
+Spinel
+Topaz
+Variscite
+Willemite
+Yellow-Diamond
+Zircon
+
+Gold
+Silver
+Platinum
+Palladium
+Iridum
+Copper
+Bismuth
+Uranium
+Brass
+Mithril
+Adamant
+
+Stone
+Rock
+Earth
+Clay
+Mud
+Lava
+Flint
+Shale
+Granite
+Bedrock
+Boulder
+Crag
+Soil
+
+
+
+
+last name suffixes
+--------------------
+verbs
+------------
+hater
+lover
+visionary
+oracle
+sniffer
+cutter
+joiner
+taster
+finder
+destroyer
+muncher
+hoarder
+worker
+sage
+leader
+
+
+nouns
+-------------
+hammer
+forge
+anvil
+foot
+heart
+hand
+head
+keeper
+warden
+delver
+breaker
+shield
+sword
+axe
+shield
+mace
+flail

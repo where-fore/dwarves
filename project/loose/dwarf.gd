@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
-var speed = 50
+var speed:float = 50.0
 
 func _physics_process(_delta: float) -> void:
 	navigation_agent_2d.target_position = get_global_mouse_position()

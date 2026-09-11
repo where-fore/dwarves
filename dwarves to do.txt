@@ -1,8 +1,39 @@
+
+start with enough gold to buy two dwarves
+as they break a block, unlock stronger pickaxes ui button
+as they take one rock back, unlock strong backs (carry two ores back) ui button
+as they don't do anything for 20 seconds, unlock fast shoes ui button
+etc
+have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them to the game screen
+
+ - get world working, blocks have attributes and can be destroyed/recreated, and world spawns in
+	-attributes work with debug
+	-need a world spawner
+ - get dwarves working, they mine autonomously instead of just following your cursor
+	- ideally there's a failsafe, where clicking them picks them up or something
+ - draw some more ores, a ui 9-patch, some power-up icons, redraw the dwarves mayhaps to have a body
+
+------------
+
+
+
+
+
 get world working as a tilemap?
 	have a default stone tile
 	have some ore tiles spawn in too, in veins
 		probably indexed sprites, have the stone just be grey for now, and ores be colours
 		not sure on the spawning algorithm, maybe an entropy/bell curve spawner? for each tile, if stone and no adjacent minerals, roll. if successful, create a vein shape. for tile in vein shape, if stone, turn into mineral
+	
+	currently working as a tilemap. i have different layers, different sets of code on them, and different custom data layers so i can recognize gold as Ore_type="Gold"
+		this seems a bit fucked, there's a handful of magic strings in the tile data set editors, and it's in the inspector instead of in code.
+		it's also not particularly component based
+	i could replace this with a TileSetSceneCollection (or something named like that), where the tilemap paints individual game object scenes, as was my first instincts
+		theoretically this is much worse performance, but i imagine my performance budget is quite large, and both options are very cheap
+		this would be the same architecture i'm used to
+	
+	i suppose i'll do tilemaps with custom data layers to try something new.
+-
 
 probably get the world generation going first, including a cut out in the centre of the map
 get spawning in a lil dwarf working

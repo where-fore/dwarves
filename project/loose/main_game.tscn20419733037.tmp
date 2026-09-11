@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
-[ext_resource type="Script" uid="uid://cbfdagp6lygax" path="res://loose/stone_interaction.gd" id="2_33awh"]
+[ext_resource type="Script" uid="uid://cbfdagp6lygax" path="res://loose/testing.gd" id="2_33awh"]
 [ext_resource type="Script" uid="uid://cq83t1dg28817" path="res://loose/dwarf_spawner.gd" id="2_dps4b"]
 [ext_resource type="PackedScene" uid="uid://n7uc5yvkduvw" path="res://loose/dwarf.tscn" id="3_yeltw"]
-[ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/ore_interaction.gd" id="4_dauqe"]
+[ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/testing_ore.gd" id="4_dauqe"]
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8bvjn"]

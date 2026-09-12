@@ -12,6 +12,7 @@ have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them 
  - get dwarves working, they mine autonomously instead of just following your cursor
 	- ideally there's a failsafe, where clicking them picks them up or something
  - draw some more ores, a ui 9-patch, some power-up icons, redraw the dwarves mayhaps to have a body
+	-probably draw the full tiling stone first, so i know what size to make the ore overlay
 
 ------------
 

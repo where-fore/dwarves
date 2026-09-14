@@ -2,13 +2,16 @@ extends Node2D
 
 @export var individual_dwarf:PackedScene
 
+func _ready() -> void:
+	DebugEvents.dwarf_spawn_request.connect(spawn_a_dwarf)
+
 func spawn_a_dwarf() -> void:
 	var new_dwarf:Node2D = individual_dwarf.instantiate()
 	add_child(new_dwarf)
 
-func _unhandled_input(event: InputEvent) -> void:
-	@warning_ignore("unsafe_property_access")
-	if event is InputEventKey and event.pressed:
-		@warning_ignore("unsafe_property_access")
-		if event.keycode == KEY_1:
-			spawn_a_dwarf()
+#func _unhandled_input(event: InputEvent) -> void:
+	#@warning_ignore("unsafe_property_access")
+	#if event is InputEventKey and event.pressed:
+		#@warning_ignore("unsafe_property_access")
+		#if event.keycode == KEY_1:
+			#spawn_a_dwarf()

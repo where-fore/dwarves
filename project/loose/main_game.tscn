@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dx84pmc7trp7o"]
+[gd_scene load_steps=10 format=4 uid="uid://dx84pmc7trp7o"]
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://n7uc5yvkduvw" path="res://loose/dwarf.tscn" id="3_yeltw"]
 [ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/ore_interaction.gd" id="4_dauqe"]
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
+[ext_resource type="Script" uid="uid://t6vgrwnllp2x" path="res://loose/dwarf_button.gd" id="8_vaqii"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8bvjn"]
 vertices = PackedVector2Array(506, 262, 538, 262, 538, 282, 506, 282, 506, 314, 454, 314, 454, 282, 454, 262, 422, 282, 422, 262, 506, 230, 454, 230)
@@ -48,3 +49,31 @@ individual_dwarf = ExtResource("3_yeltw")
 
 [node name="EntranceGraphic" type="Sprite2D" parent="DwarfManager/DwarfSpawner"]
 texture = ExtResource("6_8bvjn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -15.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Everyone, get in here!"
+script = ExtResource("8_vaqii")
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]

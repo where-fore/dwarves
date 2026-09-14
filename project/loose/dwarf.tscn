@@ -13,7 +13,6 @@ mining_detection_raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D2"), Node
 texture = ExtResource("1_ldkcw")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.21960784, 1, 1)
 
@@ -27,4 +26,4 @@ target_position = Vector2(15, -10)
 target_position = Vector2(15, 10)
 
 [node name="RayCast2D3" type="RayCast2D" parent="."]
-target_position = Vector2(25, 0)
+target_position = Vector2(20, 0)

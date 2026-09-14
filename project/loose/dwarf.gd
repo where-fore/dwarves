@@ -68,8 +68,13 @@ func process_movement() -> void:
 	move_and_slide()
 
 func set_movement_goal() -> void:
-	var direction_vertical:int = [-1,1].pick_random()
-	var direction_horizontal:int = [-1,1].pick_random()
+	var direction_vertical:int = [-1,0,1].pick_random()
+	var direction_horizontal:int = [-1,0,1].pick_random()
+	if direction_vertical == 0 and direction_horizontal == 0:
+		var decision:int = [0,1].pick_random()
+		match decision:
+			0: direction_horizontal = 1
+			1: direction_vertical = 1
 	var direction:Vector2 = Vector2(direction_vertical, direction_horizontal) * 250
 	current_movement_goal = Vector2i(global_position) + Vector2i(direction)
 

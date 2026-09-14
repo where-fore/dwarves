@@ -1,0 +1,7 @@
+extends Node
+
+@warning_ignore_start("unused_signal")
+signal dwarf_spawn_request
+signal remove_tile_at(location:Vector2)
+
+@warning_ignore_restore("unused_signal")

@@ -6,13 +6,28 @@ as they don't do anything for 20 seconds, unlock fast shoes ui button
 etc
 have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them to the game screen
 
+
+-look into the navmesh baking error message. im probably doing something very wrong with how often i'm calling to rebake? not sure
+
  - get world working, blocks have attributes and can be destroyed/recreated, and world spawns in
 	-attributes work with debug
-	-need a world spawner
+	-world loosely spawns in
+		-need good logic for the world
+		-need good attributes, which needs first set of values. block hp, ore value (do i have to bring them home?)
  - get dwarves working, they mine autonomously instead of just following your cursor
 	- ideally there's a failsafe, where clicking them picks them up or something
+	- radar:
+		first, see if any adjacent/available/visible ores have value, and pursue those
+		then, sort adjacent quadrants by total ore value, and pursue that quadrant
+		or just strip mine out, instead of radaring
  - draw some more ores, a ui 9-patch, some power-up icons, redraw the dwarves mayhaps to have a body
 	-probably draw the full tiling stone first, so i know what size to make the ore overlay
+	-some outer wall section (that is marked as non-mineable)
+	
+maybe:
+ - some sort of fog of war, maybe even a full dynamic lighting system? would be really cool. dwarves place torches every so many blocks. anyhow can also just do a basic fog of war
+	- would help with the frustration of your dwarves not going towards the epic vein of ore, since you don't know it's there
+		- but maybe that's a good feeling? would want to provide tools maybe? or at least a short time-to-mine?
 
 ------------
 

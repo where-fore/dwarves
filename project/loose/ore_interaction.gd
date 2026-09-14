@@ -34,15 +34,17 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var global_mouse_position:Vector2 = get_global_mouse_position()
 		var mouse_position_on_map:Vector2 = local_to_map(to_local(global_mouse_position))
-		print_debug(mouse_position_on_map)
 		if get_cell_tile_data(mouse_position_on_map):
 			var cell_to_check:TileData = get_cell_tile_data(mouse_position_on_map)
 			var ore_type:String = cell_to_check.get_custom_data("Ore Type")
 			if ore_type:
-				print_debug(ore_type)
+				#print_debug(ore_type)
+				pass
 			else:
-				print_debug("no ore type provided")
+				#print_debug("no ore type provided")
+				pass
 		else:
-			print_debug("no cell")
+			#print_debug("no cell")
+			pass
 		
-		erase_cell(mouse_position_on_map)
+		#erase_cell(mouse_position_on_map)

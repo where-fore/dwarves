@@ -23,6 +23,8 @@ have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them 
  - draw some more ores, a ui 9-patch, some power-up icons, redraw the dwarves mayhaps to have a body
 	-probably draw the full tiling stone first, so i know what size to make the ore overlay
 	-some outer wall section (that is marked as non-mineable)
+ - get ui working, currently clicking buttons interacts with unhandled_input on the ore layer
+	which i don't need really, but i don't understand since that is handled input?
 	
 maybe:
  - some sort of fog of war, maybe even a full dynamic lighting system? would be really cool. dwarves place torches every so many blocks. anyhow can also just do a basic fog of war

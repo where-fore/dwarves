@@ -6,9 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_t5v1m"]
 radius = 16.0
 
-[node name="Dwarf" type="CharacterBody2D" node_paths=PackedStringArray("mining_detection_raycasts")]
+[node name="Dwarf" type="CharacterBody2D" node_paths=PackedStringArray("mining_detection_raycasts", "name_label", "name_label_positioner")]
 script = ExtResource("1_t5v1m")
 mining_detection_raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D2"), NodePath("RayCast2D3")]
+name_label = NodePath("LabelPosition/NameLabel")
+name_label_positioner = NodePath("LabelPosition")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5707964
@@ -29,3 +31,25 @@ target_position = Vector2(16, 16)
 
 [node name="RayCast2D3" type="RayCast2D" parent="."]
 target_position = Vector2(22, 0)
+
+[node name="LabelPosition" type="Node2D" parent="."]
+
+[node name="NameLabel" type="Label" parent="LabelPosition"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 10
+text = "tester
+tester"
+horizontal_alignment = 1
+vertical_alignment = 1

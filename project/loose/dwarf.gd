@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var navigation_agent_2d:NavigationAgent2D = $NavigationAgent2D
 @export var mining_detection_raycasts:Array[RayCast2D]
+@export var name_label:Label
+@export var name_label_positioner:Node2D
 
 var speed:float = 50.0
 
@@ -23,6 +25,8 @@ func _ready() -> void:
 	scale = Vector2.ZERO
 	
 	spawn_in_animation()
+	
+	generate_name()
 
 func _physics_process(delta: float) -> void:
 	if active:
@@ -64,7 +68,9 @@ func process_movement() -> void:
 	var new_velocity:Vector2 = global_position.direction_to(next_path_position)
 	
 	velocity = new_velocity * speed
-	if velocity.length() > 0: rotation = velocity.angle()
+	if velocity.length() > 0:
+		rotation = velocity.angle()
+		name_label_positioner.global_rotation = 0
 	move_and_slide()
 
 func set_movement_goal() -> void:
@@ -85,3 +91,6 @@ func spawn_in_animation() -> void:
 	tween.tween_property(self, "scale", Vector2(1,1), spawn_in_animation_timer)
 	await tween.finished
 	active = true
+
+func generate_name() -> void:
+	name_label.text = DwarfNames.make_dwarf_name()

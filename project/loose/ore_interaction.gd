@@ -4,6 +4,10 @@ const gold_id:Vector2i = Vector2i(3,0)
 const diamond_id:Vector2i = Vector2i(4,0)
 const coal_id:Vector2i = Vector2i(13,0)
 
+var gold_value:int = 50
+var diamond_value:int = 100
+var coal_value:int = 10
+
 func _ready() -> void:
 	randomize_spawn()
 	DebugEvents.remove_tile_at.connect(destroy_cell)
@@ -32,7 +36,23 @@ func randomize_spawn() -> void:
 
 
 func destroy_cell(at_location:Vector2) -> void:
-	erase_cell(at_location)
+	if get_cell_tile_data(at_location):
+		var cell_to_check:TileData = get_cell_tile_data(at_location)
+		var ore_type:String = cell_to_check.get_custom_data("Ore Type")
+		if ore_type:
+			#print_debug(ore_type)
+			var score_gained:int
+			match ore_type:
+				"Gold": score_gained = gold_value
+				"Diamond": score_gained = diamond_value
+				"Coal": score_gained = coal_value
+			UiEvents.score_change_additive.emit(score_gained)
+		else:
+			push_error("no ore type provided by this cell at: ", at_location)
+		erase_cell(at_location)
+	else:
+		#print_debug("no cell at that location on this layer")
+		pass
 
 #func _input(event: InputEvent) -> void:
 	#@warning_ignore("unsafe_property_access")

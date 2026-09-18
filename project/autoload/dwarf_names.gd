@@ -8,7 +8,6 @@ func make_dwarf_name() -> String:
 	else:
 		_banned_full_names.append(generated_name)
 	
-	print_debug(generated_name)
 	return generated_name
 
 func clear_ban_list() -> void:
@@ -92,7 +91,7 @@ const _first_names:Array[String] = [
 const _last_names_prefixes:Array[String] = [
 	"Agate",
 	"Adamite",
-	"Aelxandrite",
+	"Alexandrite",
 	"Amethyst",
 	"Amber",
 	"Ammolite",

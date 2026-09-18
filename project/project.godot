@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DebugEvents="*res://autoload/debug_events.gd"
 DwarfNames="*res://autoload/dwarf_names.gd"
+UiEvents="*res://autoload/ui_events.gd"
 
 [debug]
 

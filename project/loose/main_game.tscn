@@ -74,7 +74,7 @@ offset_right = -15.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Everyone, get in here!"
+text = "Everyone, get in here!  (Costs 50)"
 script = ExtResource("8_vaqii")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]

@@ -23,7 +23,7 @@ func randomize_spawn() -> void:
 			if x >= 12 and x <= 17 and y >= 5 and y <= 11: continue
 			
 			var coords:Vector2i = Vector2i(x,y)
-			var chance_to_spawn:int = 20
+			var chance_to_spawn:int = 30
 			if randi_range(1,100) <= chance_to_spawn:
 				var rolled_ore:int = randi_range(1,3)
 				var rolled_coords:Vector2i

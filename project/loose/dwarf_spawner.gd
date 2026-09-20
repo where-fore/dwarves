@@ -3,7 +3,7 @@ extends Node2D
 @export var individual_dwarf:PackedScene
 
 func _ready() -> void:
-	DebugEvents.dwarf_spawn_request.connect(spawn_a_dwarf)
+	DebugEvents.dwarf_spawn_confirmed.connect(spawn_a_dwarf)
 
 func spawn_a_dwarf() -> void:
 	var new_dwarf:Node2D = individual_dwarf.instantiate()

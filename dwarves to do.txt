@@ -20,6 +20,7 @@ have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them 
 		first, see if any adjacent/available/visible ores have value, and pursue those
 		then, sort adjacent quadrants by total ore value, and pursue that quadrant
 		or just strip mine out, instead of radaring
+	- they get confused when setting goals past the edge of the map - the goals aren't sanity checked at all
  - draw some more ores, a ui 9-patch, some power-up icons, redraw the dwarves mayhaps to have a body
 	-probably draw the full tiling stone first, so i know what size to make the ore overlay
 	-some outer wall section (that is marked as non-mineable)

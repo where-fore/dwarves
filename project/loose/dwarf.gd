@@ -58,7 +58,7 @@ func process_mining() -> void:
 							if mining_cooldown <= 0:
 								mining_cooldown = mining_cooldown_reset
 								tilemap_detected.destroy_cell(point_position_on_map)
-								process_movement()
+								#process_movement()
 
 
 func process_movement() -> void:
@@ -70,6 +70,7 @@ func process_movement() -> void:
 			set_movement_goal()
 	
 	if not current_movement_goal: set_movement_goal()
+	if current_movement_goal.distance_to(global_position) <= 20: set_movement_goal()
 	navigation_agent_2d.target_position = current_movement_goal
 	var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
 	var new_velocity:Vector2 = global_position.direction_to(next_path_position)
@@ -88,7 +89,7 @@ func set_movement_goal() -> void:
 		match decision:
 			0: direction_horizontal = 1
 			1: direction_vertical = 1
-	var direction:Vector2 = Vector2(direction_vertical, direction_horizontal) * 250
+	var direction:Vector2 = Vector2(direction_vertical, direction_horizontal) * 350
 	current_movement_goal = Vector2i(global_position) + Vector2i(direction)
 
 func spawn_in_animation() -> void:

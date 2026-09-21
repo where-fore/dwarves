@@ -20,6 +20,8 @@ var mining_cooldown:float = 0
 
 var current_movement_goal:Vector2i
 
+var speed_level_multiplier:float = 1.25
+
 func _ready() -> void:
 	active = false
 	scale = Vector2.ZERO
@@ -27,6 +29,11 @@ func _ready() -> void:
 	spawn_in_animation()
 	
 	generate_name()
+	
+	DebugEvents.dwarf_speed_increase_confirmed.connect(increase_speed_by)
+
+func setup(speed_levels_to_start_with:int) -> void:
+	increase_speed_by(speed_levels_to_start_with)
 
 func _physics_process(delta: float) -> void:
 	if active:
@@ -94,3 +101,7 @@ func spawn_in_animation() -> void:
 
 func generate_name() -> void:
 	name_label.text = DwarfNames.make_dwarf_name()
+
+func increase_speed_by(levels:int = 1) -> void:
+	speed *= levels * speed_level_multiplier
+	mining_cooldown_reset /= levels * speed_level_multiplier

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dx84pmc7trp7o"]
+[gd_scene load_steps=12 format=4 uid="uid://dx84pmc7trp7o"]
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
 [ext_resource type="Script" uid="uid://t6vgrwnllp2x" path="res://loose/dwarf_button.gd" id="8_vaqii"]
 [ext_resource type="Script" uid="uid://40i7k2jyfc8g" path="res://loose/score_counter.gd" id="9_ocjp4"]
+[ext_resource type="Script" uid="uid://dhnd3ag80c46x" path="res://loose/speed_button.gd" id="10_sv27o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8bvjn"]
 vertices = PackedVector2Array(506, 262, 538, 262, 538, 282, 506, 282, 506, 314, 454, 314, 454, 282, 454, 262, 422, 282, 422, 262, 506, 230, 454, 230)
@@ -61,22 +62,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = -15.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Everyone, get in here!  (Costs 50)"
-script = ExtResource("8_vaqii")
-
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -90,4 +75,28 @@ grow_horizontal = 0
 text = "Richness: "
 script = ExtResource("9_ocjp4")
 
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="CanvasLayer/Control/Button" method="_on_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Spawn" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Everyone, get in here!  (Costs 50)"
+script = ExtResource("8_vaqii")
+
+[node name="Speed" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Everyone, move faster!  (Costs 100)"
+script = ExtResource("10_sv27o")
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Spawn" to="CanvasLayer/Control/VBoxContainer/Spawn" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Speed" to="CanvasLayer/Control/VBoxContainer/Speed" method="_on_pressed"]

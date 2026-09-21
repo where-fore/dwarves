@@ -6,6 +6,7 @@ var base_label_string:String = "Richness: "
 func _ready() -> void:
 	UiEvents.score_change_additive.connect(change_score_additive)
 	DebugEvents.dwarf_spawn_request.connect(spend_score_to_spawn_dwarf)
+	DebugEvents.dwarf_speed_increase_request.connect(spend_score_to_increase_speed)
 	self.text = base_label_string + str(0)
 	change_score_additive(100)
 
@@ -19,6 +20,12 @@ func spend_score_to_spawn_dwarf() -> void:
 	if current_score >= 50:
 		change_score_additive(-50)
 		DebugEvents.dwarf_spawn_confirmed.emit()
+
+func spend_score_to_increase_speed() -> void:
+	var current_score:int = get_score_from_label_text()
+	if current_score >= 100:
+		change_score_additive(-100)
+		DebugEvents.dwarf_speed_increase_confirmed.emit()
 
 func get_score_from_label_text() -> int:
 	var regex_for_number:RegEx = RegEx.create_from_string(r"\d+")

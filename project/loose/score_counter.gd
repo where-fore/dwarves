@@ -8,7 +8,7 @@ func _ready() -> void:
 	DebugEvents.dwarf_spawn_request.connect(spend_score_to_spawn_dwarf)
 	DebugEvents.dwarf_speed_increase_request.connect(spend_score_to_increase_speed)
 	self.text = base_label_string + str(0)
-	change_score_additive(100)
+	change_score_additive(80)
 
 func change_score_additive(value:int) -> void:
 	var current_score:int = get_score_from_label_text()

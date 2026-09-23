@@ -14,6 +14,7 @@ have a full skill tree menu, and allow you to "favourite" 5 buttons to pin them 
 	-world loosely spawns in
 		-need good logic for the world
 		-need good attributes, which needs first set of values. block hp, ore value (do i have to bring them home?)
+	-be able to respawn the world, starting from scratch
  - get dwarves working, they mine autonomously instead of just following your cursor
 	- ideally there's a failsafe, where clicking them picks them up or something
 	- radar:

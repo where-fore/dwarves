@@ -62,19 +62,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1.0
-offset_top = 20.0
-offset_right = -30.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "Richness: "
-script = ExtResource("9_ocjp4")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 3
@@ -87,6 +74,28 @@ offset_top = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 0.3764706)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -11.5
+offset_right = 138.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current Riches: "
+horizontal_alignment = 1
+script = ExtResource("9_ocjp4")
 
 [node name="Spawn" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2

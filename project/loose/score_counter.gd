@@ -1,6 +1,6 @@
 extends Label
 
-var base_label_string:String = "Richness: "
+var base_label_string:String = "Current Riches: "
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

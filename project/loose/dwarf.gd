@@ -98,6 +98,7 @@ func spawn_in_animation() -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(1,1), spawn_in_animation_timer)
 	await tween.finished
+	DebugEvents.dwarf_spawn_completed.emit()
 	active = true
 
 func generate_name() -> void:

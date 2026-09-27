@@ -30,7 +30,7 @@ func _ready() -> void:
 	
 	generate_name()
 	
-	DebugEvents.dwarf_speed_increase_confirmed.connect(increase_speed_by)
+	BasicEvents.dwarf_speed_increase_confirmed.connect(increase_speed_by)
 
 func setup(speed_levels_to_start_with:int) -> void:
 	increase_speed_by(speed_levels_to_start_with)
@@ -98,7 +98,7 @@ func spawn_in_animation() -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(1,1), spawn_in_animation_timer)
 	await tween.finished
-	DebugEvents.dwarf_spawn_completed.emit()
+	BasicEvents.dwarf_spawn_completed.emit()
 	active = true
 
 func generate_name() -> void:

@@ -5,8 +5,8 @@ extends Node2D
 var current_speed_level:int = 1
 
 func _ready() -> void:
-	DebugEvents.dwarf_spawn_confirmed.connect(spawn_a_dwarf)
-	DebugEvents.dwarf_speed_increase_confirmed.connect(increase_dwarf_speed)
+	BasicEvents.dwarf_spawn_confirmed.connect(spawn_a_dwarf)
+	BasicEvents.dwarf_speed_increase_confirmed.connect(increase_dwarf_speed)
 
 func increase_dwarf_speed() -> void:
 	current_speed_level += 1

@@ -10,7 +10,7 @@ var coal_value:int = 10
 
 func _ready() -> void:
 	randomize_spawn()
-	DebugEvents.remove_tile_at.connect(destroy_cell)
+	BasicEvents.remove_tile_at.connect(destroy_cell)
 
 func randomize_spawn() -> void:
 	var width:int = 29

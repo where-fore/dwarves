@@ -11,7 +11,7 @@ signal map_updated
 		#destroy_cell(mouse_position_on_map)
 
 func destroy_cell(at_location:Vector2) -> void:
-	DebugEvents.remove_tile_at.emit(at_location)
+	BasicEvents.remove_tile_at.emit(at_location)
 	erase_cell(at_location)
 	set_cells_terrain_connect([at_location], 0, -1, true)
 	map_updated.emit()

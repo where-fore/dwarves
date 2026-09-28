@@ -7,6 +7,7 @@ func _ready() -> void:
 	UiEvents.score_change_additive.connect(change_score_additive)
 	BasicEvents.dwarf_spawn_request.connect(spend_score_to_spawn_dwarf)
 	BasicEvents.dwarf_speed_increase_request.connect(spend_score_to_increase_speed)
+	BasicEvents.cheat_resource_increase_request.connect(change_score_additive)
 	self.text = base_label_string + str(0)
 	change_score_additive(80)
 

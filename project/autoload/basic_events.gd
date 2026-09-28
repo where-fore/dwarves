@@ -6,6 +6,7 @@ signal dwarf_spawn_confirmed
 signal dwarf_spawn_completed
 signal dwarf_speed_increase_request
 signal dwarf_speed_increase_confirmed
+signal cheat_resource_increase_request(value:int)
 signal remove_tile_at(location:Vector2)
 
 @warning_ignore_restore("unused_signal")

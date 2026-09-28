@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var mining_detection_raycasts:Array[RayCast2D]
 @export var name_label:Label
 @export var name_label_positioner:Node2D
+@export var selection_highlight_parent:Node2D
 
 var speed:float = 50.0
 
@@ -23,6 +24,7 @@ var current_movement_goal:Vector2i
 var speed_level_multiplier:float = 1.25
 
 func _ready() -> void:
+	selection_highlight_parent.visible = false
 	active = false
 	scale = Vector2.ZERO
 	
@@ -107,3 +109,14 @@ func generate_name() -> void:
 func increase_speed_by(levels:int = 1) -> void:
 	speed *= levels * speed_level_multiplier
 	mining_cooldown_reset /= levels * speed_level_multiplier
+
+
+func _on_mouse_entered() -> void:
+	selection_highlight_parent.visible = true
+
+func _on_mouse_exited() -> void:
+	selection_highlight_parent.visible = false
+
+#on mouse click: active = false. follow mouse = true. in physics process, add: if follow mouse, then position = mouse position
+#on mouse click: if not active: follow mouse = false, active = true
+#somehow avoid clicking on spawn? maybe use two levels of "active" access

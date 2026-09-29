@@ -7,7 +7,7 @@
 radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_t5v1m"]
-colors = PackedColorArray(0.85, 0.74233335, 0.04250001, 0.96862745, 0.03137255, 0.03137255, 0.03137255, 0)
+colors = PackedColorArray(0.85, 0.36550006, 0.04250001, 1, 0.03137255, 0.03137255, 0.03137255, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kq2vr"]
 gradient = SubResource("Gradient_t5v1m")
@@ -15,15 +15,16 @@ width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.4, 0)
+fill_to = Vector2(0.8, 0)
 
-[node name="Dwarf" type="CharacterBody2D" node_paths=PackedStringArray("mining_detection_raycasts", "name_label", "name_label_positioner", "selection_highlight_parent")]
+[node name="Dwarf" type="CharacterBody2D" node_paths=PackedStringArray("mining_detection_raycasts", "name_label", "name_label_positioner", "selection_highlight_parent", "grabbed_highlight_parent")]
 input_pickable = true
 script = ExtResource("1_t5v1m")
-mining_detection_raycasts = [NodePath("RayCast2D"), NodePath("RayCast2D2"), NodePath("RayCast2D3")]
+mining_detection_raycasts = [NodePath("MiningHighLeft"), NodePath("MiningLowRight"), NodePath("MiningCentral")]
 name_label = NodePath("LabelPosition/NameLabel")
 name_label_positioner = NodePath("LabelPosition")
 selection_highlight_parent = NodePath("SelectionHighlight")
+grabbed_highlight_parent = NodePath("GrabbedHighlight")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5707964
@@ -36,14 +37,17 @@ debug_path_custom_color = Color(1, 0.21960784, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t5v1m")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(16, -16)
+[node name="MiningHighLeft" type="RayCast2D" parent="."]
+position = Vector2(-5, 0)
+target_position = Vector2(18, -14)
 
-[node name="RayCast2D2" type="RayCast2D" parent="."]
-target_position = Vector2(16, 16)
+[node name="MiningLowRight" type="RayCast2D" parent="."]
+position = Vector2(-5, 0)
+target_position = Vector2(18, 14)
 
-[node name="RayCast2D3" type="RayCast2D" parent="."]
-target_position = Vector2(22, 0)
+[node name="MiningCentral" type="RayCast2D" parent="."]
+position = Vector2(-5, 0)
+target_position = Vector2(26, 0)
 
 [node name="LabelPosition" type="Node2D" parent="."]
 
@@ -68,8 +72,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SelectionHighlight" type="Sprite2D" parent="."]
-visible = false
 texture = SubResource("GradientTexture2D_kq2vr")
 
+[node name="GrabbedHighlight" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kq2vr")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

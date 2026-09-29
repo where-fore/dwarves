@@ -5,11 +5,13 @@ extends CharacterBody2D
 @export var name_label:Label
 @export var name_label_positioner:Node2D
 @export var selection_highlight_parent:Node2D
+@export var grabbed_highlight_parent:Node2D
 
 var speed:float = 50.0
 
 var spawn_in_animation_timer:float = 1.5
-var active:bool
+var active:bool = false
+var grabbed_by_mouse:bool = false
 
 var follow_cursor:bool = false
 
@@ -25,7 +27,7 @@ var speed_level_multiplier:float = 1.25
 
 func _ready() -> void:
 	selection_highlight_parent.visible = false
-	active = false
+	grabbed_highlight_parent.visible = false
 	scale = Vector2.ZERO
 	
 	spawn_in_animation()
@@ -45,6 +47,8 @@ func _physics_process(delta: float) -> void:
 		process_movement()
 
 func process_mining() -> void:
+	if grabbed_by_mouse: return
+	
 	if mining_cooldown <= 0:
 		for raycast:RayCast2D in mining_detection_raycasts:
 			if raycast.is_colliding():
@@ -64,13 +68,14 @@ func process_mining() -> void:
 
 
 func process_movement() -> void:
-	if follow_cursor: 
-		navigation_agent_2d.target_position = get_global_mouse_position()
-	else:
-		if redirect_cooldown <= 0:
-			redirect_cooldown = redirect_cooldown_reset
-			set_movement_goal()
+	if grabbed_by_mouse:
+		global_position = global_position.lerp(get_global_mouse_position(), 0.2)
+		return
 	
+	if redirect_cooldown <= 0:
+		redirect_cooldown = redirect_cooldown_reset
+		set_movement_goal()
+
 	if not current_movement_goal: set_movement_goal()
 	if current_movement_goal.distance_to(global_position) <= 20: set_movement_goal()
 	navigation_agent_2d.target_position = current_movement_goal
@@ -120,3 +125,10 @@ func _on_mouse_exited() -> void:
 #on mouse click: active = false. follow mouse = true. in physics process, add: if follow mouse, then position = mouse position
 #on mouse click: if not active: follow mouse = false, active = true
 #somehow avoid clicking on spawn? maybe use two levels of "active" access
+#on click, if selection highlight and active: attach to mouse
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		grabbed_by_mouse = !grabbed_by_mouse
+		grabbed_highlight_parent.visible = grabbed_by_mouse

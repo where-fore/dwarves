@@ -25,6 +25,8 @@ var current_movement_goal:Vector2i
 
 var speed_level_multiplier:float = 1.25
 
+var grabbed_scale_factor:float = 1.5
+
 func _ready() -> void:
 	selection_highlight_parent.visible = false
 	grabbed_highlight_parent.visible = false
@@ -70,6 +72,7 @@ func process_mining() -> void:
 func process_movement() -> void:
 	if grabbed_by_mouse:
 		global_position = global_position.lerp(get_global_mouse_position(), 0.2)
+		rotation_degrees = randi_range(0,360) # okay this is probably a bit too fast
 		return
 	
 	if redirect_cooldown <= 0:
@@ -122,13 +125,17 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	selection_highlight_parent.visible = false
 
-#on mouse click: active = false. follow mouse = true. in physics process, add: if follow mouse, then position = mouse position
-#on mouse click: if not active: follow mouse = false, active = true
-#somehow avoid clicking on spawn? maybe use two levels of "active" access
-#on click, if selection highlight and active: attach to mouse
-
-
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		grabbed_by_mouse = !grabbed_by_mouse
-		grabbed_highlight_parent.visible = grabbed_by_mouse
+		toggle_mouse_grab()
+
+func toggle_mouse_grab() -> void:
+	grabbed_by_mouse = !grabbed_by_mouse
+	
+	if grabbed_by_mouse:
+		grabbed_highlight_parent.visible = true
+		scale *= grabbed_scale_factor
+	
+	elif not grabbed_by_mouse:
+		grabbed_highlight_parent.visible = false
+		scale /= grabbed_scale_factor

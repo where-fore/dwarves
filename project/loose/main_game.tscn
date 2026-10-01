@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dx84pmc7trp7o"]
+[gd_scene load_steps=14 format=4 uid="uid://dx84pmc7trp7o"]
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cq83t1dg28817" path="res://loose/dwarf_spawner.gd" id="2_dps4b"]
 [ext_resource type="PackedScene" uid="uid://n7uc5yvkduvw" path="res://loose/dwarf.tscn" id="3_yeltw"]
 [ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/ore_interaction.gd" id="4_dauqe"]
+[ext_resource type="PackedScene" uid="uid://cpooe3khuto2n" path="res://loose/yellow_burst.tscn" id="5_3snil"]
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
 [ext_resource type="Script" uid="uid://t6vgrwnllp2x" path="res://loose/dwarf_button.gd" id="8_vaqii"]
 [ext_resource type="Script" uid="uid://40i7k2jyfc8g" path="res://loose/score_counter.gd" id="9_ocjp4"]
@@ -42,6 +43,7 @@ tile_set = ExtResource("1_yeltw")
 collision_enabled = false
 navigation_enabled = false
 script = ExtResource("4_dauqe")
+mining_particles = ExtResource("5_3snil")
 
 [node name="DwarfManager" type="Node2D" parent="."]
 

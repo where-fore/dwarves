@@ -1,5 +1,7 @@
 extends TileMapLayer
 
+@export var mining_particles:PackedScene
+
 const gold_id:Vector2i = Vector2i(3,0)
 const diamond_id:Vector2i = Vector2i(4,0)
 const coal_id:Vector2i = Vector2i(13,0)
@@ -50,9 +52,15 @@ func destroy_cell(at_location:Vector2) -> void:
 		else:
 			push_error("no ore type provided by this cell at: ", at_location)
 		erase_cell(at_location)
+		create_explosion_particles(at_location)
 	else:
 		#print_debug("no cell at that location on this layer")
 		pass
+
+func create_explosion_particles(location:Vector2) -> void:
+	var new_explosion:CPUParticles2D = mining_particles.instantiate() as CPUParticles2D
+	new_explosion.global_position = to_global(map_to_local(location))
+	add_child(new_explosion)
 
 #func _input(event: InputEvent) -> void:
 	#@warning_ignore("unsafe_property_access")

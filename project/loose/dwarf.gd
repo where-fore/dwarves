@@ -21,6 +21,9 @@ var redirect_cooldown:float = 0
 var mining_cooldown_reset:float = 1.5
 var mining_cooldown:float = 0
 
+var rotation_when_grabbed_cooldown_reset:float = 0.025
+var rotation_when_grabbed_cooldown:float = 0
+
 var current_movement_goal:Vector2i
 
 var speed_level_multiplier:float = 1.25
@@ -45,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	if active:
 		redirect_cooldown -= delta
 		mining_cooldown -= delta
+		rotation_when_grabbed_cooldown -= delta
 		process_mining()
 		process_movement()
 
@@ -72,7 +76,10 @@ func process_mining() -> void:
 func process_movement() -> void:
 	if grabbed_by_mouse:
 		global_position = global_position.lerp(get_global_mouse_position(), 0.2)
-		rotation_degrees = randi_range(0,360) # okay this is probably a bit too fast
+		if rotation_when_grabbed_cooldown <= 0:
+			rotation_degrees = randi_range(0,360) # okay this is probably a bit too fast
+			name_label_positioner.global_rotation = 0
+			rotation_when_grabbed_cooldown = rotation_when_grabbed_cooldown_reset
 		return
 	
 	if redirect_cooldown <= 0:
@@ -120,7 +127,8 @@ func increase_speed_by(levels:int = 1) -> void:
 
 
 func _on_mouse_entered() -> void:
-	selection_highlight_parent.visible = true
+	if not grabbed_by_mouse:
+		selection_highlight_parent.visible = true
 
 func _on_mouse_exited() -> void:
 	selection_highlight_parent.visible = false
@@ -133,6 +141,7 @@ func toggle_mouse_grab() -> void:
 	grabbed_by_mouse = !grabbed_by_mouse
 	
 	if grabbed_by_mouse:
+		selection_highlight_parent.visible = false
 		grabbed_highlight_parent.visible = true
 		scale *= grabbed_scale_factor
 	

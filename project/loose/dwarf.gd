@@ -148,3 +148,5 @@ func toggle_mouse_grab() -> void:
 	elif not grabbed_by_mouse:
 		grabbed_highlight_parent.visible = false
 		scale /= grabbed_scale_factor
+		
+		redirect_cooldown = 0

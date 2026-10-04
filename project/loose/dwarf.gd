@@ -99,8 +99,8 @@ func process_movement() -> void:
 	move_and_slide()
 
 func set_movement_goal() -> void:
-	var direction_vertical:int = [-1,0,1].pick_random()
-	var direction_horizontal:int = [-1,0,1].pick_random()
+	var direction_vertical:float = [-1, -0.5, 0, 0.5, 1].pick_random()
+	var direction_horizontal:float = [-1, -0.5, 0, 0.5, 1].pick_random()
 	if direction_vertical == 0 and direction_horizontal == 0:
 		var decision:int = [0,1].pick_random()
 		match decision:

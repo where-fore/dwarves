@@ -42,6 +42,7 @@ rotation = -1.5707964
 texture = ExtResource("2_t5v1m")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.21960784, 1, 1)
 

@@ -15,7 +15,7 @@ var grabbed_by_mouse:bool = false
 
 var follow_cursor:bool = false
 
-var redirect_cooldown_reset:float = 12
+var redirect_cooldown_reset:float = 9
 var redirect_cooldown:float = 0
 
 var mining_cooldown_reset:float = 1.5
@@ -80,12 +80,12 @@ func process_movement() -> void:
 			rotation_degrees = randi_range(0,360) # okay this is probably a bit too fast
 			name_label_positioner.global_rotation = 0
 			rotation_when_grabbed_cooldown = rotation_when_grabbed_cooldown_reset
-		return
+		return #breaks the function here
 	
 	if redirect_cooldown <= 0:
 		redirect_cooldown = redirect_cooldown_reset
 		set_movement_goal()
-
+	
 	if not current_movement_goal: set_movement_goal()
 	if current_movement_goal.distance_to(global_position) <= 20: set_movement_goal()
 	navigation_agent_2d.target_position = current_movement_goal

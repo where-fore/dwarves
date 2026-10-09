@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://dx84pmc7trp7o"]
+[gd_scene load_steps=15 format=4 uid="uid://dx84pmc7trp7o"]
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
 [ext_resource type="Script" uid="uid://cbfdagp6lygax" path="res://loose/stone_interaction.gd" id="2_33awh"]
 [ext_resource type="Script" uid="uid://cq83t1dg28817" path="res://loose/dwarf_spawner.gd" id="2_dps4b"]
 [ext_resource type="PackedScene" uid="uid://n7uc5yvkduvw" path="res://loose/dwarf.tscn" id="3_yeltw"]
+[ext_resource type="PackedScene" uid="uid://b4s82ihp8dwmk" path="res://loose/grey_burst.tscn" id="4_57qwm"]
 [ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/ore_interaction.gd" id="4_dauqe"]
 [ext_resource type="PackedScene" uid="uid://cpooe3khuto2n" path="res://loose/yellow_burst.tscn" id="5_3snil"]
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
@@ -37,6 +38,7 @@ tile_map_data = PackedByteArray("AAAdABAAAAACAAAAAAAdAA8AAAACAAAAAAAdAA4AAAACAAA
 tile_set = ExtResource("1_yeltw")
 navigation_visibility_mode = 2
 script = ExtResource("2_33awh")
+mining_particles = ExtResource("4_57qwm")
 
 [node name="AuxiliaryMinerals" type="TileMapLayer" parent="Worldspace/NavigationRegion2D"]
 tile_set = ExtResource("1_yeltw")

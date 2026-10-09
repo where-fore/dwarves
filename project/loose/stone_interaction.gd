@@ -3,6 +3,8 @@ class_name StoneLayer
 
 signal map_updated
 
+@export var mining_particles:PackedScene
+
 #func _input(event: InputEvent) -> void:
 	#@warning_ignore("unsafe_property_access")
 	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -13,5 +15,11 @@ signal map_updated
 func destroy_cell(at_location:Vector2) -> void:
 	BasicEvents.remove_tile_at.emit(at_location)
 	erase_cell(at_location)
+	create_explosion_particles(at_location)
 	set_cells_terrain_connect([at_location], 0, -1, true)
 	map_updated.emit()
+
+func create_explosion_particles(location:Vector2) -> void:
+	var new_explosion:CPUParticles2D = mining_particles.instantiate() as CPUParticles2D
+	new_explosion.global_position = to_global(map_to_local(location))
+	add_child(new_explosion)

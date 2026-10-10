@@ -87,7 +87,7 @@ func process_movement() -> void:
 		set_movement_goal()
 	
 	if not current_movement_goal: set_movement_goal()
-	if current_movement_goal.distance_to(global_position) <= 20: set_movement_goal()
+	if current_movement_goal.distance_to(global_position) <= 50: set_movement_goal()
 	navigation_agent_2d.target_position = current_movement_goal
 	var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
 	var new_velocity:Vector2 = global_position.direction_to(next_path_position)

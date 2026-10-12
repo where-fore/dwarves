@@ -47,6 +47,17 @@ navigation_enabled = false
 script = ExtResource("4_dauqe")
 mining_particles = ExtResource("5_3snil")
 
+[node name="FogLayer" type="CanvasLayer" parent="Worldspace"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Worldspace/FogLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="DwarfManager" type="Node2D" parent="."]
 
 [node name="DwarfSpawner" type="Node2D" parent="DwarfManager"]

@@ -1,4 +1,12 @@
 
+fog of war to do:
+create a texture (just a solid black for now probably, but able to implement an animated noise texture overlay) for the fog of war, paint the screen at its resolution
+create a "fog of war paintbrush" component, with an @export radius, and attach it to the dwarf
+	this is an area with a circle collider, and when it touches the fog texture it paints it transparent?
+
+
+
+
 start with enough gold to buy two dwarves
 as they break a block, unlock stronger pickaxes ui button
 as they take one rock back, unlock strong backs (carry two ores back) ui button

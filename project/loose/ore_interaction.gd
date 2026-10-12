@@ -1,6 +1,7 @@
 extends TileMapLayer
 
 @export var mining_particles:PackedScene
+@export var diamond_particles:PackedScene
 
 const gold_id:Vector2i = Vector2i(3,0)
 const diamond_id:Vector2i = Vector2i(4,0)
@@ -46,7 +47,9 @@ func destroy_cell(at_location:Vector2) -> void:
 			var score_gained:int
 			match ore_type:
 				"Gold": score_gained = gold_value
-				"Diamond": score_gained = diamond_value
+				"Diamond":
+					score_gained = diamond_value
+					create_diamond_particles(at_location)
 				"Coal": score_gained = coal_value
 			UiEvents.score_change_additive.emit(score_gained)
 		else:
@@ -59,6 +62,11 @@ func destroy_cell(at_location:Vector2) -> void:
 
 func create_explosion_particles(location:Vector2) -> void:
 	var new_explosion:CPUParticles2D = mining_particles.instantiate() as CPUParticles2D
+	new_explosion.global_position = to_global(map_to_local(location))
+	add_child(new_explosion)
+
+func create_diamond_particles(location:Vector2) -> void:
+	var new_explosion:CPUParticles2D = diamond_particles.instantiate() as CPUParticles2D
 	new_explosion.global_position = to_global(map_to_local(location))
 	add_child(new_explosion)
 

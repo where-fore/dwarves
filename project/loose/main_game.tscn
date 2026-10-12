@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dx84pmc7trp7o"]
+[gd_scene load_steps=16 format=4 uid="uid://dx84pmc7trp7o"]
 
 [ext_resource type="Script" uid="uid://wep00d3g4w00" path="res://loose/navigation_manager.gd" id="1_4h2fx"]
 [ext_resource type="TileSet" uid="uid://cy3o1hwgh8lbq" path="res://loose/base_tile_sheet.tres" id="1_yeltw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dp1c8yejp6mt" path="res://loose/ore_interaction.gd" id="4_dauqe"]
 [ext_resource type="PackedScene" uid="uid://cpooe3khuto2n" path="res://loose/yellow_burst.tscn" id="5_3snil"]
 [ext_resource type="Texture2D" uid="uid://gq3ycfbt2w41" path="res://sprites/entrance.png" id="6_8bvjn"]
+[ext_resource type="PackedScene" uid="uid://b5ob5vv7312vj" path="res://loose/blue_burst.tscn" id="7_6sxa0"]
 [ext_resource type="Script" uid="uid://t6vgrwnllp2x" path="res://loose/dwarf_button.gd" id="8_vaqii"]
 [ext_resource type="Script" uid="uid://40i7k2jyfc8g" path="res://loose/score_counter.gd" id="9_ocjp4"]
 [ext_resource type="Script" uid="uid://dhnd3ag80c46x" path="res://loose/speed_button.gd" id="10_sv27o"]
@@ -46,6 +47,7 @@ collision_enabled = false
 navigation_enabled = false
 script = ExtResource("4_dauqe")
 mining_particles = ExtResource("5_3snil")
+diamond_particles = ExtResource("7_6sxa0")
 
 [node name="FogLayer" type="CanvasLayer" parent="Worldspace"]
 visible = false

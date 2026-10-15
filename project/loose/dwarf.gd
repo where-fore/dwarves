@@ -24,7 +24,7 @@ var mining_cooldown:float = 0
 var rotation_when_grabbed_cooldown_reset:float = 0.025
 var rotation_when_grabbed_cooldown:float = 0
 
-var current_movement_goal:Vector2i
+var current_movement_goal:Vector2
 
 var speed_level_multiplier:float = 1.25
 
@@ -62,7 +62,7 @@ func process_mining() -> void:
 				
 				if raycast.get_collider() is StoneLayer:
 					var tilemap_detected:StoneLayer = raycast.get_collider()
-					var point_position_on_map:Vector2i = tilemap_detected.local_to_map(tilemap_detected.to_local(detection_point))
+					var point_position_on_map:Vector2 = tilemap_detected.local_to_map(tilemap_detected.to_local(detection_point))
 					if tilemap_detected.get_cell_tile_data(point_position_on_map):
 						var cell_to_check:TileData = tilemap_detected.get_cell_tile_data(point_position_on_map)
 						var is_mineable:bool = cell_to_check.get_custom_data("Is Mineable")
@@ -106,8 +106,8 @@ func set_movement_goal() -> void:
 		match decision:
 			0: direction_horizontal = 1
 			1: direction_vertical = 1
-	var direction:Vector2 = Vector2(direction_vertical, direction_horizontal) * 350
-	current_movement_goal = Vector2i(global_position) + Vector2i(direction)
+	var direction:Vector2 = Vector2(direction_horizontal, direction_vertical) * 350
+	current_movement_goal = Vector2(global_position) + Vector2(direction)
 
 func spawn_in_animation() -> void:
 	var tween:Tween = create_tween()

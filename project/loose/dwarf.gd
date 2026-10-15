@@ -88,15 +88,32 @@ func process_movement() -> void:
 	
 	if not current_movement_goal: set_movement_goal()
 	if current_movement_goal.distance_to(global_position) <= 50: set_movement_goal()
-	navigation_agent_2d.target_position = current_movement_goal
-	var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_velocity:Vector2 = global_position.direction_to(next_path_position)
+	#navigation_agent_2d.target_position = current_movement_goal
+	#var next_path_position:Vector2 = navigation_agent_2d.get_next_path_position()
+	var new_velocity:Vector2 = get_direction_towards(current_movement_goal)
 	
 	velocity = new_velocity * speed
 	if velocity.length() > 0:
 		rotation = velocity.angle()
 		name_label_positioner.global_rotation = 0
 	move_and_slide()
+
+func get_direction_towards(target_position:Vector2) -> Vector2:
+	var tolerance_bound:float = 2
+	var potential_velocities:Array[Vector2]
+	var x_difference:float = target_position.x - global_position.x
+	var y_difference:float = target_position.y - global_position.y
+	
+	if x_difference > tolerance_bound:
+		potential_velocities.append(Vector2.RIGHT)
+	elif x_difference < -1*tolerance_bound:
+		potential_velocities.append(Vector2.LEFT)
+	elif y_difference > tolerance_bound:
+		potential_velocities.append(Vector2.DOWN)
+	elif y_difference < -1*tolerance_bound:
+		potential_velocities.append(Vector2.UP)
+	
+	return potential_velocities.pick_random()
 
 func set_movement_goal() -> void:
 	var direction_vertical:float = [-1, -0.5, 0, 0.5, 1].pick_random()

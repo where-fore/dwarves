@@ -51,15 +51,15 @@ shape = SubResource("CircleShape2D_t5v1m")
 
 [node name="MiningHighLeft" type="RayCast2D" parent="."]
 position = Vector2(-5, 0)
-target_position = Vector2(20, -14)
+target_position = Vector2(26, -10)
 
 [node name="MiningLowRight" type="RayCast2D" parent="."]
 position = Vector2(-5, 0)
-target_position = Vector2(20, 14)
+target_position = Vector2(26, 10)
 
 [node name="MiningCentral" type="RayCast2D" parent="."]
 position = Vector2(-5, 0)
-target_position = Vector2(26, 0)
+target_position = Vector2(30, 0)
 
 [node name="LabelPosition" type="Node2D" parent="."]
 

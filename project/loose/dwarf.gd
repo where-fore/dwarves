@@ -100,20 +100,24 @@ func process_movement() -> void:
 
 func get_direction_towards(target_position:Vector2) -> Vector2:
 	var tolerance_bound:float = 2
-	var potential_velocities:Array[Vector2]
+	var potential_velocity:Vector2 = Vector2.ZERO
 	var x_difference:float = target_position.x - global_position.x
 	var y_difference:float = target_position.y - global_position.y
 	
 	if x_difference > tolerance_bound:
-		potential_velocities.append(Vector2.RIGHT)
+		potential_velocity += Vector2.RIGHT
 	elif x_difference < -1*tolerance_bound:
-		potential_velocities.append(Vector2.LEFT)
-	elif y_difference > tolerance_bound:
-		potential_velocities.append(Vector2.DOWN)
-	elif y_difference < -1*tolerance_bound:
-		potential_velocities.append(Vector2.UP)
+		potential_velocity += Vector2.LEFT
 	
-	return potential_velocities.pick_random()
+	if y_difference > tolerance_bound:
+		potential_velocity += Vector2.DOWN
+	elif y_difference < -1*tolerance_bound:
+		potential_velocity += Vector2.UP
+	
+	potential_velocity.x = randf_range(0, potential_velocity.x)
+	potential_velocity.y = randf_range(0, potential_velocity.y)
+	
+	return potential_velocity
 
 func set_movement_goal() -> void:
 	var direction_vertical:float = [-1, -0.5, 0, 0.5, 1].pick_random()

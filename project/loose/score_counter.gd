@@ -8,6 +8,7 @@ func _ready() -> void:
 	BasicEvents.dwarf_spawn_request.connect(spend_score_to_spawn_dwarf)
 	BasicEvents.dwarf_speed_increase_request.connect(spend_score_to_increase_speed)
 	BasicEvents.cheat_resource_increase_request.connect(change_score_additive)
+	BasicEvents.retire_request.connect(spend_score_to_win)
 	self.text = base_label_string + str(0)
 	change_score_additive(80)
 
@@ -27,6 +28,12 @@ func spend_score_to_increase_speed() -> void:
 	if current_score >= 100:
 		change_score_additive(-100)
 		BasicEvents.dwarf_speed_increase_confirmed.emit()
+
+func spend_score_to_win() -> void:
+	var current_score:int = get_score_from_label_text()
+	if current_score >= 5000:
+		change_score_additive(-5000)
+		BasicEvents.retire_confirmed.emit()
 
 func get_score_from_label_text() -> int:
 	var regex_for_number:RegEx = RegEx.create_from_string(r"\d+")

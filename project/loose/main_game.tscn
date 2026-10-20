@@ -154,6 +154,7 @@ nice work though"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("16_jo1md")
+kerblam_particles_scenes = Array[PackedScene]([ExtResource("5_3snil"), ExtResource("4_57qwm"), ExtResource("7_6sxa0")])
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Spawn" to="CanvasLayer/Control/VBoxContainer/Spawn" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Speed" to="CanvasLayer/Control/VBoxContainer/Speed" method="_on_pressed"]
